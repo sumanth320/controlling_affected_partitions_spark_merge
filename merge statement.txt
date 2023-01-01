@@ -1,0 +1,4 @@
+year = delta_df.select('year').distinct().collect()
+merge_years = ", ".join("'" + str(row['year']) + "'" for row in year)
+
+main_df.alias("target").merge(delta_df.alias("source"),"target.year IN (" + merge_years + ") .....
